@@ -15,14 +15,12 @@
     <!-- Подключен файл со стандартными стилями бустрап -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>
-      {% block title %}
-      {{ title }}
-      {% endblock %}
+      Записи сообщества Лев Толстой – зеркало русской революции.
     </title>
   </head>
   <body>
     <header>
-      {% include includes/header.html %}
+      {% include header.html %}
     </header>
     <main>
       {% block content %}
@@ -101,6 +99,6 @@
     <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
     <!-- py-3: контент внутри размещается с отступом сверху и снизу -->         
     <footer class="border-top text-center py-3">
-      {% include 'includes/footer.html' %}    
+      {% include footer.html %}    
     </footer>
   </body>
