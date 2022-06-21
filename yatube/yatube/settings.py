@@ -121,3 +121,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = '/static/'
+
+# Количество постов
+
+NUMBER_OF_POSTS = 10

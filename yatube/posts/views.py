@@ -2,12 +2,14 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import Group, Post
 
+from django.conf import settings
 
-# Create your views here.
+
 def index(request):
+    """Главная страница."""
     template = 'posts/index.html'
-    title = 'Это главная страница проекта Yatube'
-    posts = Post.objects.order_by('-pub_date')[:10]
+    title = 'Последние обновления на сайте'
+    posts = Post.objects.all()[:settings.NUMBER_OF_POSTS]
     context = {
         'title': title,
         'posts': posts
@@ -18,10 +20,12 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    posts = group.group.all()
+    title = 'Записи сообщества ' + group.title
     template = 'posts/group_list.html'
     context = {
         'group': group,
-        'posts': posts
+        'posts': posts,
+        'title': title
     }
     return render(request, template, context)

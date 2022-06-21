@@ -4,7 +4,6 @@ from .models import Group, Post
 
 
 class PostAdmin(admin.ModelAdmin):
-    # Поля в админке
     list_display = (
         'pk',
         'text',
@@ -13,18 +12,11 @@ class PostAdmin(admin.ModelAdmin):
         'group'
     )
 
-    # Интерфейс изминения группы
     list_editable = ('group',)
-    # Интерфейс для поиска по тексту постов
     search_fields = ('text',)
-    # Фильтрация по дате
     list_filter = ('pub_date',)
-    # Пустое поле, если в графе ничего нет
-    empty_value_display = '-empty-'
+    empty_value_display = '-пусто-'
 
 
-# Регистрация конфигуратора PostAdmin для модели Post
 admin.site.register(Post, PostAdmin)
-
-# Регистрация модели Group
 admin.site.register(Group)
