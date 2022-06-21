@@ -7,14 +7,14 @@ class Group(models.Model):
     title = models.CharField(
         max_length=200,
         verbose_name='group title'
-        )
+    )
     slug = models.SlugField(
         unique=True,
         verbose_name='group slug'
-        )
+    )
     description = models.TextField(
-        verbose_name='desctription of the group'
-        )
+        verbose_name='description of the group'
+    )
 
     def __str__(self):
         return self.title
@@ -36,7 +36,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField(
         auto_now_add=True,
         verbose_name='publication date'
-        )
+    )
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

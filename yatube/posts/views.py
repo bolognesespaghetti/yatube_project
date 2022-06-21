@@ -8,10 +8,8 @@ from django.conf import settings
 def index(request):
     """Главная страница."""
     template = 'posts/index.html'
-    title = 'Последние обновления на сайте'
     posts = Post.objects.all()[:settings.NUMBER_OF_POSTS]
     context = {
-        'title': title,
         'posts': posts
     }
 
@@ -19,13 +17,12 @@ def index(request):
 
 
 def group_posts(request, slug):
+    """Страница с постами групп."""
     group = get_object_or_404(Group, slug=slug)
     posts = group.group.all()
-    title = 'Записи сообщества ' + group.title
     template = 'posts/group_list.html'
     context = {
         'group': group,
         'posts': posts,
-        'title': title
     }
     return render(request, template, context)
