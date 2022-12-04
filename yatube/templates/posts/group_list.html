@@ -2,6 +2,6 @@
 {% block title %}{{ group.title }}{% endblock %}
 {% block content %}
   <h1>{{ group.title }}</h1>
-  <p>{{ group.description|linebreaks }}</p>
+  <p>Записи сообщества: {{ group.description|linebreaks }}</p>
   {% include 'includes/article.html' %}
 {% endblock %}

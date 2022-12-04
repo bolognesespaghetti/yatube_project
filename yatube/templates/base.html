@@ -27,11 +27,9 @@
     <header>
       {% include 'includes/header.html' %}
     </header>
-    {% block content %}
       <main>
-        Ошибка шаблонов. Шаблон загрузился из base.html
+        {% block content %}Ошибка шаблонов. Шаблон загрузился из base.html{% endblock %}
       </main>
-    {% endblock %}
     <footer class="border-top text-center py-3">
       {% include 'includes/footer.html' %}
     </footer>

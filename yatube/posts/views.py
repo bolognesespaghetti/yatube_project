@@ -19,7 +19,7 @@ def index(request):
 def group_posts(request, slug):
     """Страница с постами групп."""
     group = get_object_or_404(Group, slug=slug)
-    posts = group.group.all()
+    posts = group.posts.all()
     template = 'posts/group_list.html'
     context = {
         'group': group,
