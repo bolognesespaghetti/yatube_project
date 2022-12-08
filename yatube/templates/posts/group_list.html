@@ -1,7 +1,8 @@
-{% extends 'base.html' %}
-{% block title %}{{ group.title }}{% endblock %}
+{% extends "base.html" %}
+{% block title %}{{ group.title }}{% endblock title %}
 {% block content %}
   <h1>{{ group.title }}</h1>
   <p>Записи сообщества: {{ group.description|linebreaks }}</p>
-  {% include 'includes/article.html' %}
-{% endblock %}
+  {% include "includes/article.html" %}
+  {% include "posts/includes/paginator.html" %}
+{% endblock content %}
