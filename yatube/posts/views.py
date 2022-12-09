@@ -1,8 +1,9 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
+from .forms import PostForm
 from .models import Group, Post, User
 
 
@@ -54,5 +55,19 @@ def post_detail(request, post_id):
     template = 'posts/post_detail.html'
     context = {
         'post': post,
+    }
+    return render(request, template, context)
+
+
+def post_create(request):
+    form = PostForm(request.POST or None)
+    if form.is_valid():    
+        post = form.save(commit=False)
+        post.author = request.user
+        form.save()
+        return redirect('posts:profile', request.user)
+    template = 'posts/create_post.html'
+    context = {
+        'form': form,
     }
     return render(request, template, context)
